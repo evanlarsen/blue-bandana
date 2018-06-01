@@ -1,5 +1,7 @@
 <template>
   <div class="page-host">
-      <router-view></router-view>
+    <compose view-model="ui/header/header"></compose>
+    <router-view></router-view>
+    <compose view="ui/footer.html"></compose>
   </div>
 </template>
