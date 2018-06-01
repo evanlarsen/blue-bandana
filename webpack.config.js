@@ -95,7 +95,7 @@ module.exports = ({production, server, extractCss, coverage, analyze} = {}) => (
     ]
   },
   plugins: [
-    new AureliaPlugin(),
+    new AureliaPlugin({ includeAll: 'src' }),
     new ProvidePlugin({
       'Promise': 'bluebird'
     }),
