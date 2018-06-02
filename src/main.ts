@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'jquery';
 import 'popper.js';
 import 'bootstrap';
-import 'font-awesome';
+import './font-awesome';
 
 // remove out if you don't want a Promise polyfill (remove also from webpack.config.js)
 Bluebird.config({ warnings: { wForgottenReturn: false } });
