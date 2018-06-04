@@ -1,0 +1,8 @@
+C:\Users\larsene\Desktop\projects\Lunch.Core\bin\Debug\netcoreapp2.0\Lunch.Core.deps.json
+C:\Users\larsene\Desktop\projects\Lunch.Core\bin\Debug\netcoreapp2.0\Lunch.Core.dll
+C:\Users\larsene\Desktop\projects\Lunch.Core\bin\Debug\netcoreapp2.0\Lunch.Core.pdb
+C:\Users\larsene\Desktop\projects\Lunch.Core\obj\Debug\netcoreapp2.0\Lunch.Core.csproj.CoreCompileInputs.cache
+C:\Users\larsene\Desktop\projects\Lunch.Core\obj\Debug\netcoreapp2.0\Lunch.Core.AssemblyInfoInputs.cache
+C:\Users\larsene\Desktop\projects\Lunch.Core\obj\Debug\netcoreapp2.0\Lunch.Core.AssemblyInfo.cs
+C:\Users\larsene\Desktop\projects\Lunch.Core\obj\Debug\netcoreapp2.0\Lunch.Core.dll
+C:\Users\larsene\Desktop\projects\Lunch.Core\obj\Debug\netcoreapp2.0\Lunch.Core.pdb
