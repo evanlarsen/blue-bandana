@@ -5,7 +5,11 @@ VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lunch.Web", "Lunch.Web\Lunch.Web.csproj", "{8473261E-DB1C-41CD-928F-EC15CAC6C01F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lunch.Core", "Lunch.Core\Lunch.Core.csproj", "{6BBB5A39-36E2-4DE6-B9CD-0350A8902861}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lunch.Core", "Lunch.Core\Lunch.Core.csproj", "{6BBB5A39-36E2-4DE6-B9CD-0350A8902861}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lunch.Admin.Web", "Lunch.Admin.Web\Lunch.Admin.Web.csproj", "{2D327C03-E2C3-4E3B-9FEA-BF20C2DEF086}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lunch.Data.Sql", "Lunch.Data.Sql\Lunch.Data.Sql.csproj", "{82816E52-26D8-4A66-AE6E-F776D16C5C72}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{6BBB5A39-36E2-4DE6-B9CD-0350A8902861}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BBB5A39-36E2-4DE6-B9CD-0350A8902861}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BBB5A39-36E2-4DE6-B9CD-0350A8902861}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D327C03-E2C3-4E3B-9FEA-BF20C2DEF086}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D327C03-E2C3-4E3B-9FEA-BF20C2DEF086}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D327C03-E2C3-4E3B-9FEA-BF20C2DEF086}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D327C03-E2C3-4E3B-9FEA-BF20C2DEF086}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82816E52-26D8-4A66-AE6E-F776D16C5C72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82816E52-26D8-4A66-AE6E-F776D16C5C72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82816E52-26D8-4A66-AE6E-F776D16C5C72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82816E52-26D8-4A66-AE6E-F776D16C5C72}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
