@@ -7,8 +7,6 @@ namespace Lunch.Person.Domain
         public Guid PersonId { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
-        public bool IsOfficeManager { get; set; }
-        public Guid CompanyLocationId { get; set; }
         public PhoneNumber PhoneNumber { get; set; }
         public Account Account { get; set; }
     }

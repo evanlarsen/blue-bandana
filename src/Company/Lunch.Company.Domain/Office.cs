@@ -2,9 +2,9 @@
 
 namespace Lunch.Company.Domain
 {
-    public class CompanyLocation
+    public class Office
     {
-        public Guid CompanyLocationId { get; set; }
+        public Guid OfficeId { get; set; }
         public string Name { get; set; }
         public Address Address { get; set; }
     }

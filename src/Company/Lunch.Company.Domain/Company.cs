@@ -8,6 +8,6 @@ namespace Lunch.Company.Domain
         public Guid CompanyId { get; set; }
         public string Name { get; set; }
         public CompanySize CompanySize { get; set; }
-        public ICollection<CompanyLocation> CompanyLocations { get; set; }
+        public ICollection<Office> Offices { get; set; }
     }
 }

@@ -1,7 +1,6 @@
-﻿using Domain = Lunch.Person.Domain;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace Lunch.Person.Sql
 {

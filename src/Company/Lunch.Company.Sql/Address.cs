@@ -5,8 +5,7 @@ namespace Lunch.Company.Sql
 {
     public class Address
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public Guid AddressId { get; set; }
+        public Guid OfficeId { get; set; }
         public string StreetNumber { get; set; }
         public string StreetAddress { get; set; }
         public string City { get; set; }

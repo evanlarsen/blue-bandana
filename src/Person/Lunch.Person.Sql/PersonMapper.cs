@@ -1,4 +1,4 @@
-﻿using Domain = Lunch.Person.Domain;
+﻿using System;
 
 namespace Lunch.Person.Sql
 {
@@ -13,46 +13,40 @@ namespace Lunch.Person.Sql
 
         public void MapToEntity(ref Person person, Domain.Person dPers)
         {
-            person.Account = MapAccount(dPers.Account);
-            person.AccountId = person.Account.AccountId;
-            person.CompanyLocationId = dPers.CompanyLocationId;
+            person.Account = MapAccount(dPers.Account, dPers.PersonId);
             person.PersonId = dPers.PersonId;
             person.Email = dPers.Email;
-            person.IsOfficeManager = dPers.IsOfficeManager;
             person.Name = dPers.Name;
-            person.PhoneNumber = MapPhoneNumber(dPers.PhoneNumber);
-            person.PhoneNumberId = person.PhoneNumber.PhoneNumberId;
+            person.PhoneNumber = MapPhoneNumber(dPers.PhoneNumber, dPers.PersonId);
         }
 
-        private Account MapAccount(Domain.Account dAcct)
+        private Account MapAccount(Domain.Account dAcct, Guid personId)
         {
             var account = new Account();
-            account.AccountId = dAcct.AccountId;
+            account.PersonId = personId;
             account.Password = dAcct.Password;
             return account;
         }
 
-        private PhoneNumber MapPhoneNumber(Domain.PhoneNumber dPn)
+        private PhoneNumber MapPhoneNumber(Domain.PhoneNumber dPn, Guid personId)
         {
             var phoneNumber = new PhoneNumber();
+            phoneNumber.PersonId = personId;
             phoneNumber.Number = dPn.Number;
             phoneNumber.IsVerified = dPn.IsVerified;
-            phoneNumber.PhoneNumberId = dPn.PhoneNumberId;
             phoneNumber.VerificationCode = dPn.VerificationCode;
+            phoneNumber.VerificationCodeCreatedDate = dPn.VerificationCodeCreatedDate;
             return phoneNumber;
         }
 
         public Domain.Person MapFromEntity(Person person)
         {
             var dPers = new Domain.Person();
-            dPers.Account = MapAccount(person.Account);
-            dPers.CompanyLocationId = person.CompanyLocationId;
             dPers.PersonId = person.PersonId;
             dPers.Email = person.Email;
-            dPers.IsOfficeManager = person.IsOfficeManager;
             dPers.Name = person.Name;
             dPers.PhoneNumber = MapPhoneNumber(person.PhoneNumber);
-
+            dPers.Account = MapAccount(person.Account);
             return dPers;
         }
 
@@ -61,15 +55,14 @@ namespace Lunch.Person.Sql
             var dPn = new Domain.PhoneNumber();
             dPn.Number = phoneNumber.Number;
             dPn.IsVerified = phoneNumber.IsVerified;
-            dPn.PhoneNumberId = phoneNumber.PhoneNumberId;
             dPn.VerificationCode = phoneNumber.VerificationCode;
+            dPn.VerificationCodeCreatedDate = phoneNumber.VerificationCodeCreatedDate;
             return dPn;
         }
 
         private Domain.Account MapAccount(Account account)
         {
             var dAcct = new Domain.Account();
-            dAcct.AccountId = account.AccountId;
             dAcct.Password = account.Password;
             return dAcct;
         }

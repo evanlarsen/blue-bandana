@@ -11,6 +11,6 @@ namespace Lunch.Company.Sql
         public string Name { get; set; }
         public int CompanySizeId { get; set; }
         public CompanySize CompanySize { get; set; }
-        public ICollection<CompanyLocation> CompanyLocations { get; set; }
+        public ICollection<Office> Offices { get; set; }
     }
 }

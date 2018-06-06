@@ -50,16 +50,16 @@ namespace Lunch.Company.Sql
             return companySize;
         }
 
-        private Domain.CompanyLocation MapCompanyLocation(CompanyLocation companyLocation)
+        private Domain.Office MapCompanyLocation(CompanyLocation companyLocation)
         {
-            var dLoc = new Domain.CompanyLocation();
+            var dLoc = new Domain.Office();
             dLoc.Address = MapAddress(companyLocation.Address);
             dLoc.CompanyLocationId = companyLocation.CompanyLocationId;
             dLoc.Name = companyLocation.Name;
             return dLoc;
         }
 
-        private CompanyLocation MapCompanyLocation(Domain.CompanyLocation dLoc, Guid companyId)
+        private CompanyLocation MapCompanyLocation(Domain.Office dLoc, Guid companyId)
         {
             var companyLocation = new CompanyLocation();
             companyLocation.Address = MapAddress(dLoc.Address);
