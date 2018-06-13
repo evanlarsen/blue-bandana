@@ -6,8 +6,8 @@ namespace Lunch.Person.Domain
     {
         public string Number { get; set; }
         public bool IsVerified { get; set; }
-        public int VerificationCode { get; set; }
-        public DateTime VerificationCodeCreatedDate { get; set; }
+        public int? VerificationCode { get; set; }
+        public DateTime? VerificationCodeCreatedDate { get; set; }
 
     }
 }

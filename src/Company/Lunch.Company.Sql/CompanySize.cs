@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Lunch.Company.Sql
@@ -18,7 +17,7 @@ namespace Lunch.Company.Sql
         public void Configure(EntityTypeBuilder<CompanySize> builder)
         {
             builder.HasKey(companySize => companySize.CompanySizeId);
-            builder.HasData(new List<CompanySize>
+            builder.HasData(new CompanySize[]
             {
                 new CompanySize { CompanySizeId = 1, From = 0, To = 49},
                 new CompanySize { CompanySizeId = 2, From = 50, To = 99},
