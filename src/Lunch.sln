@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lunch.Company.Sql", "Compan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lunch.Person.Sql", "Person\Lunch.Person.Sql\Lunch.Person.Sql.csproj", "{09C65A90-49C8-4372-809E-FBA8E568AA5B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{B769BAB8-DE1B-4A4E-9046-DBB623B9895D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Sql.Tests", "Infrastructure\Infrastructure.Sql.Tests\Infrastructure.Sql.Tests.csproj", "{E8221273-55EC-42AD-BDC4-8482D4D00DEA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +47,10 @@ Global
 		{09C65A90-49C8-4372-809E-FBA8E568AA5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09C65A90-49C8-4372-809E-FBA8E568AA5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09C65A90-49C8-4372-809E-FBA8E568AA5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8221273-55EC-42AD-BDC4-8482D4D00DEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8221273-55EC-42AD-BDC4-8482D4D00DEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8221273-55EC-42AD-BDC4-8482D4D00DEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8221273-55EC-42AD-BDC4-8482D4D00DEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +60,7 @@ Global
 		{45F50538-2CDF-4524-A0F3-92DD2368A262} = {09E4F095-65D9-46DC-836E-983E44A05B6E}
 		{B6A5405E-4994-469F-B050-3260732FD97B} = {09E4F095-65D9-46DC-836E-983E44A05B6E}
 		{09C65A90-49C8-4372-809E-FBA8E568AA5B} = {DBA78379-9586-4BC3-AD46-0C148695AC0F}
+		{E8221273-55EC-42AD-BDC4-8482D4D00DEA} = {B769BAB8-DE1B-4A4E-9046-DBB623B9895D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {51A684F1-08A7-4D0C-A50F-5695B7926382}

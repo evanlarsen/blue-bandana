@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
-using Domain = Lunch.Company.Domain;
 
 namespace Lunch.Company.Sql
 {
@@ -27,7 +26,7 @@ namespace Lunch.Company.Sql
         {
             var company = await companyContext.Companies
                     .Include(c => c.CompanySize)
-                    .Include(c => c.CompanyLocations).ThenInclude(cl => cl.Address)
+                    .Include(c => c.Offices).ThenInclude(cl => cl.Address)
                     .AsNoTracking()
                     .SingleOrDefaultAsync(c => c.CompanyId == id);
             return companyMapper.MapFromEntity(company);
@@ -37,11 +36,16 @@ namespace Lunch.Company.Sql
         {
             var company = await companyContext.Companies
                     .Include(c => c.CompanySize)
-                    .Include(c => c.CompanyLocations).ThenInclude(cl => cl.Address)
+                    .Include(c => c.Offices).ThenInclude(cl => cl.Address)
                     .SingleOrDefaultAsync(c => c.CompanyId == dComp.CompanyId);
 
             companyMapper.MapToEntity(ref company, dComp);
             await companyContext.SaveChangesAsync();
         }
+
+        private void GetCompaniesAggregate() => 
+            companyContext.Companies
+                .Include(c => c.CompanySize)
+                .Include(c => c.Offices).ThenInclude(cl => cl.Address);
     }
 }

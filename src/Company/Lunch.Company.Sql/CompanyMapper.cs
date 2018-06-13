@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Linq;
-using Domain = Lunch.Company.Domain;
 
 namespace Lunch.Company.Sql
 {
-    public class CompanyMapper
+    internal class CompanyMapper
     {
         public Domain.Company MapFromEntity(Company company)
         {
@@ -12,7 +11,7 @@ namespace Lunch.Company.Sql
             dComp.CompanyId = company.CompanyId;
             dComp.Name = company.Name;
             dComp.CompanySize = MapCompanySize(company.CompanySize);
-            dComp.CompanyLocations = company.CompanyLocations.Select(cl => MapCompanyLocation(cl)).ToHashSet();
+            dComp.Offices = company.Offices.Select(cl => MapOffice(cl)).ToHashSet();
             return dComp;
         }
 
@@ -29,7 +28,7 @@ namespace Lunch.Company.Sql
             company.Name = dComp.Name;
             company.CompanySize = MapCompanySize(dComp.CompanySize);
             company.CompanySizeId = company.CompanySize.CompanySizeId;
-            company.CompanyLocations = dComp.CompanyLocations.Select(dLoc => MapCompanyLocation(dLoc, dComp.CompanyId)).ToHashSet();
+            company.Offices = dComp.Offices.Select(dLoc => MapOffice(dLoc, dComp.CompanyId)).ToHashSet();
         }
 
         private Domain.CompanySize MapCompanySize(CompanySize companySize)
@@ -50,23 +49,23 @@ namespace Lunch.Company.Sql
             return companySize;
         }
 
-        private Domain.Office MapCompanyLocation(CompanyLocation companyLocation)
+        private Domain.Office MapOffice(Office office)
         {
             var dLoc = new Domain.Office();
-            dLoc.Address = MapAddress(companyLocation.Address);
-            dLoc.CompanyLocationId = companyLocation.CompanyLocationId;
-            dLoc.Name = companyLocation.Name;
+            dLoc.Address = MapAddress(office.Address);
+            dLoc.OfficeId = office.OfficeId;
+            dLoc.Name = office.Name;
             return dLoc;
         }
 
-        private CompanyLocation MapCompanyLocation(Domain.Office dLoc, Guid companyId)
+        private Office MapOffice(Domain.Office dLoc, Guid companyId)
         {
-            var companyLocation = new CompanyLocation();
-            companyLocation.Address = MapAddress(dLoc.Address);
-            companyLocation.CompanyLocationId = dLoc.CompanyLocationId;
-            companyLocation.Name = dLoc.Name;
-            companyLocation.CompanyId = companyId;
-            return companyLocation;
+            var office = new Office();
+            office.Address = MapAddress(dLoc.Address);
+            office.OfficeId = dLoc.OfficeId;
+            office.Name = dLoc.Name;
+            office.CompanyId = companyId;
+            return office;
         }
 
         private Domain.Address MapAddress(Address address)
