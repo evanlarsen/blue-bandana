@@ -21,10 +21,16 @@ namespace Lunch.Person.Sql
         public void Configure(EntityTypeBuilder<Person> builder)
         {
             builder.HasKey(person => person.PersonId);
-            builder.Property(person => person.Name).HasMaxLength(150);
-            builder.Property(person => person.Email).HasMaxLength(150);
-            builder.HasOne(person => person.Account).WithOne().HasForeignKey<Account>(account => account.PersonId);
-            builder.HasOne(person => person.PhoneNumber).WithOne().HasForeignKey<PhoneNumber>(phoneNumber => phoneNumber.PersonId);
+            builder.Property(person => person.Name).HasMaxLength(150).IsRequired();
+            builder.Property(person => person.Email).HasMaxLength(150).IsRequired();
+            builder
+                .HasOne(person => person.Account)
+                .WithOne()
+                .HasForeignKey<Account>(account => account.PersonId);
+            builder
+                .HasOne(person => person.PhoneNumber)
+                .WithOne()
+                .HasForeignKey<PhoneNumber>(phoneNumber => phoneNumber.PersonId);
         }
     }
 }

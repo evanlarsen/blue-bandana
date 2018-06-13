@@ -25,8 +25,14 @@ namespace Lunch.Company.Sql
         {
             builder.HasKey(office => office.OfficeId);
             builder.Property(office => office.Name).HasMaxLength(150);
-            builder.HasOne(office => office.Company).WithMany(company => company.Offices).HasForeignKey(office => office.CompanyId);
-            builder.HasOne(office => office.Address).WithOne().HasForeignKey<Office>(office => office.AddressId);
+            builder
+                .HasOne(office => office.Company)
+                .WithMany(company => company.Offices)
+                .HasForeignKey(office => office.CompanyId);
+            builder
+                .HasOne(office => office.Address)
+                .WithOne()
+                .HasForeignKey<Office>(office => office.AddressId);
         }
     }
 }

@@ -20,7 +20,8 @@ namespace Lunch.Person.Sql
         public void Configure(EntityTypeBuilder<PhoneNumber> builder)
         {
             builder.HasKey(phoneNumber => phoneNumber.PersonId);
-            builder.Property(phoneNumber => phoneNumber.Number).HasMaxLength(15);
+            builder.Property(phoneNumber => phoneNumber.Number).HasMaxLength(15).IsRequired();
+            builder.HasAlternateKey(phoneNumber => phoneNumber.Number);
             builder.Property(phoneNumber => phoneNumber.IsVerified).HasDefaultValue(false);
             builder.HasIndex(phoneNumber => phoneNumber.Number);
         }

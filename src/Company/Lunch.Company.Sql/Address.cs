@@ -28,11 +28,11 @@ namespace Lunch.Company.Sql
         public void Configure(EntityTypeBuilder<Address> builder)
         {
             builder.HasKey(address => address.AddressId);
-            builder.Property(address => address.StreetNumber).HasMaxLength(20);
-            builder.Property(address => address.StreetAddress).HasMaxLength(100);
-            builder.Property(address => address.City).HasMaxLength(50);
-            builder.Property(address => address.State).HasMaxLength(25);
-            builder.Property(address => address.ZipCode).HasMaxLength(10);
+            builder.Property(address => address.StreetNumber).HasMaxLength(20).IsRequired();
+            builder.Property(address => address.StreetAddress).HasMaxLength(100).IsRequired();
+            builder.Property(address => address.City).HasMaxLength(50).IsRequired();
+            builder.Property(address => address.State).HasMaxLength(25).IsRequired();
+            builder.Property(address => address.ZipCode).HasMaxLength(10).IsRequired();
             builder.Property(address => address.PostalCode).HasMaxLength(10);
             builder.HasIndex(address => address.StreetAddress);
             builder.HasIndex(address => new { address.StreetNumber, address.StreetAddress, address.City, address.State, address.ZipCode });

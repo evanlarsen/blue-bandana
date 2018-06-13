@@ -25,7 +25,7 @@ namespace Lunch.Company.Sql
         {
             builder.HasKey(company => company.CompanyId);
 
-            builder.Property(company => company.Name).HasMaxLength(150);
+            builder.Property(company => company.Name).HasMaxLength(150).IsRequired();
             builder.HasIndex(company => company.Name);
 
             builder

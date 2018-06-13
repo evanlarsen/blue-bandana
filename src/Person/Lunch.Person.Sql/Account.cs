@@ -16,7 +16,7 @@ namespace Lunch.Person.Sql
     {
         public void Configure(EntityTypeBuilder<Account> builder)
         {
-            builder.Property(account => account.Password).HasMaxLength(150);
+            builder.Property(account => account.Password).HasMaxLength(150).IsRequired();
             builder.HasKey(account => account.PersonId);
         }
     }
