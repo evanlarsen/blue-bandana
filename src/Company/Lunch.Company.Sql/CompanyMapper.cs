@@ -26,8 +26,8 @@ namespace Lunch.Company.Sql
         {
             company.CompanyId = dComp.CompanyId;
             company.Name = dComp.Name;
-            company.CompanySize = MapCompanySize(dComp.CompanySize);
-            company.CompanySizeId = company.CompanySize.CompanySizeId;
+            // company.CompanySize = MapCompanySize(dComp.CompanySize);
+            company.CompanySizeId = dComp.CompanySize.CompanySizeId;
             company.Offices = dComp.Offices.Select(dLoc => MapOfficeToEntity(dLoc, dComp.CompanyId)).ToHashSet();
         }
 

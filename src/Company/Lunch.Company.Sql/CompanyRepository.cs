@@ -1,6 +1,7 @@
 ﻿using Lunch.Company.Domain;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,10 +18,10 @@ namespace Lunch.Company.Sql
             mapper = new CompanyMapper();
         }
 
-        public async Task<Domain.Company> FindCompanyFromAddress(Domain.Address dAddr)
+        public async Task<List<Domain.Company>> SearchForCompaniesByAddress(Domain.Address dAddr)
         {
             // Func<string, string, bool> equals = (left, right) => string.Equals(left, right, StringComparison.CurrentCultureIgnoreCase);
-            var companyQuery = from company in store.Companies
+            var query = from company in store.Companies
                                from office in company.Offices
                                where string.Equals(office.Address.StreetNumber, dAddr.StreetNumber, StringComparison.CurrentCultureIgnoreCase)
                                && string.Equals(office.Address.StreetAddress, dAddr.StreetAddress, StringComparison.CurrentCultureIgnoreCase)
@@ -28,13 +29,28 @@ namespace Lunch.Company.Sql
                                && string.Equals(office.Address.State, dAddr.State, StringComparison.CurrentCultureIgnoreCase)
                                && string.Equals(office.Address.ZipCode, dAddr.ZipCode, StringComparison.CurrentCultureIgnoreCase)
                                select company;
+            query = IncludeAll(query);
 
-            var foundCompany = await companyQuery.FirstOrDefaultAsync();
-            if (foundCompany == null)
+            var companies = await query.ToListAsync();
+            if (companies == null || companies.Count() == 0)
             {
                 return null;
             }
-            return mapper.MapFromEntity(foundCompany);
+            return companies.ConvertAll(c => mapper.MapFromEntity(c));
+        }
+
+        public async Task<List<Domain.Company>> SearchForCompaniesByName(string name)
+        {
+            var query = from company in store.Companies
+                        where company.Name.ToUpper().Contains(name.ToUpper())
+                        select company;
+            query = IncludeAll(query);
+            var companies = await query.ToListAsync();
+            if (companies == null || companies.Count() == 0)
+            {
+                return null;
+            }
+            return companies.ConvertAll(c => mapper.MapFromEntity(c));
         }
 
         public Task Add(Domain.Company dComp)
@@ -46,9 +62,7 @@ namespace Lunch.Company.Sql
 
         public async Task<Domain.Company> Get(Guid id)
         {
-            var company = await store.Companies
-                    .Include(c => c.CompanySize)
-                    .Include(c => c.Offices).ThenInclude(cl => cl.Address)
+            var company = await IncludeAll(store.Companies)
                     .AsNoTracking()
                     .SingleOrDefaultAsync(c => c.CompanyId == id);
             return mapper.MapFromEntity(company);
@@ -56,17 +70,15 @@ namespace Lunch.Company.Sql
 
         public async Task Update(Domain.Company dComp)
         {
-            var company = await store.Companies
-                    .Include(c => c.CompanySize)
-                    .Include(c => c.Offices).ThenInclude(cl => cl.Address)
+            var company = await IncludeAll(store.Companies)
                     .SingleOrDefaultAsync(c => c.CompanyId == dComp.CompanyId);
 
             mapper.MapToEntity(ref company, dComp);
             await store.SaveChangesAsync();
         }
 
-        private void GetCompaniesAggregate() => 
-            store.Companies
+        private IQueryable<Company> IncludeAll(IQueryable<Company> companies) => 
+            companies
                 .Include(c => c.CompanySize)
                 .Include(c => c.Offices).ThenInclude(cl => cl.Address);
     }
