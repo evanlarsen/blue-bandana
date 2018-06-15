@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lunch.Infrastructure.Exceptions;
+using System;
 
 namespace Lunch.Company.Domain
 {
@@ -11,5 +12,14 @@ namespace Lunch.Company.Domain
         public string State { get; set; }
         public string ZipCode { get; set; }
         public string PostalCode { get; set; }
+
+        public void Validate()
+        {
+            var agg = new BusinessExceptionAggregator();
+            if (string.IsNullOrWhiteSpace(StreetNumber))
+            {
+                agg.AddError(Errors.AddressStreetNumberNotFound());
+            }
+        }
     }
 }
