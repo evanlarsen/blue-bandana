@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace Lunch.Company.Domain
+namespace Lunch.Company.Domain.Dtos
 {
-    public class Address
+    public class AddressDto
     {
-        public Guid AddressId { get; set; }
+        public Guid? AddressId { get; set; }
         public string StreetNumber { get; set; }
         public string StreetAddress { get; set; }
         public string City { get; set; }

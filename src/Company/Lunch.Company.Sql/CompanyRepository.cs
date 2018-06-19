@@ -11,10 +11,12 @@ namespace Lunch.Company.Sql
     {
         private readonly CompanyContext store;
         private readonly CompanyMapper mapper;
+        private readonly ICompanyFactory companyFactory;
 
-        public CompanyRepository(CompanyContext companyContext)
+        public CompanyRepository(CompanyContext companyContext, ICompanyFactory companyFactory)
         {
             this.store = companyContext;
+            this.companyFactory = companyFactory;
             mapper = new CompanyMapper();
         }
 
@@ -38,14 +40,14 @@ namespace Lunch.Company.Sql
             }
             return companies.ConvertAll(c => mapper.MapFromEntity(c));
         }
-
-        public async Task<List<Domain.Company>> SearchForCompaniesByName(string name)
+        
+        public async Task<List<Domain.Company>> SearchForCompaniesByName(string name, int take)
         {
             var query = from company in store.Companies
                         where company.Name.ToUpper().Contains(name.ToUpper())
                         select company;
             query = IncludeAll(query);
-            var companies = await query.ToListAsync();
+            var companies = await query.Take(take).ToListAsync();
             if (companies == null || companies.Count() == 0)
             {
                 return null;

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Lunch.Company.Domain;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -9,8 +10,8 @@ namespace Lunch.Company.Sql.Tests
         [Fact]
         public async Task CreateCompanyDatabase()
         {
-            CompanyConfigurationBuilder builder = new CompanyConfigurationBuilder();
-            CompanyConfiguration config = builder.Build();
+            var builder = new CompanySettingsBuilder();
+            CompanySettings config = builder.GetSettings();
             var options = new DbContextOptionsBuilder<CompanyContext>()
                 .UseSqlServer(config.ConnectionString)
                 .Options;

@@ -36,6 +36,8 @@ namespace Lunch.Company.Sql.Tests
         [Fact]
         public async Task GivenTwoCompaniesShouldFindCompanyByName()
         {
+            var settingsBuilder = new CompanySettingsBuilder();
+            var config = settingsBuilder.GetSettings();
             var options = new DbContextOptionsBuilder<CompanyContext>()
                 .UseInMemoryDatabase(databaseName: "ShouldFindCompanyByAddress")
                 .Options;
@@ -47,7 +49,7 @@ namespace Lunch.Company.Sql.Tests
                 var company2 = mock.MockCompany("XYZ");
                 await repository.Add(company1);
                 await repository.Add(company2);
-                var matchingCompanies = await repository.SearchForCompaniesByName("AB");
+                var matchingCompanies = await repository.SearchForCompaniesByName("AB", config.SearchForCompanyByNameRecordCount);
                 Assert.NotNull(matchingCompanies);
                 Assert.Single(matchingCompanies);
                 var company = matchingCompanies.First();
