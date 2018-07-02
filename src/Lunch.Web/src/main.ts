@@ -4,10 +4,15 @@ import {Aurelia} from 'aurelia-framework'
 import environment from './environment';
 import {PLATFORM} from 'aurelia-pal';
 import * as Bluebird from 'bluebird';
-import 'bootstrap/dist/css/bootstrap.css';
+import 'material-dashboard/assets/css/material-dashboard.css';
+//import 'bootstrap/dist/css/bootstrap.css';
 import 'jquery';
 import 'popper.js';
-import 'bootstrap';
+import 'material-dashboard/assets/js/core/bootstrap-material-design.min';
+import 'material-dashboard/assets/js/plugins/bootstrap-notify';
+import 'material-dashboard/assets/js/plugins/perfect-scrollbar.jquery.min';
+import 'material-dashboard/assets/js/material-dashboard';
+//import 'bootstrap';
 import './font-awesome';
 
 // remove out if you don't want a Promise polyfill (remove also from webpack.config.js)

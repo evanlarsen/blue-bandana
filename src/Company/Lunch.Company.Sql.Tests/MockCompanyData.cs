@@ -7,7 +7,7 @@ namespace Lunch.Company.Sql.Tests
     {
         public Domain.Company MockCompany(string companyName, Domain.Address address)
         {
-            var company = new Domain.Company();
+            var company = new Domain.Company(new Domain.Errors());
             company.CompanySize = new Domain.CompanySize { CompanySizeId = 1 };
             company.CompanyId = Guid.NewGuid();
             company.Name = "FDHSMV";
@@ -20,7 +20,7 @@ namespace Lunch.Company.Sql.Tests
 
         public Domain.Company MockCompany(string companyName)
         {
-            var company = new Domain.Company();
+            var company = new Domain.Company(new Domain.Errors());
             company.CompanySize = new Domain.CompanySize { CompanySizeId = 1 };
             company.CompanyId = Guid.NewGuid();
             company.Name = companyName;
